@@ -36,7 +36,7 @@ impl CertificateAuthority {
         let cert = X509::from_pem(&get_bytes_from_file(cert_file)?)?;
 
         let key = get_bytes_from_file(key_file)?;
-        let key = PKey::from_rsa(Rsa::private_key_from_pem(&key)?)?;
+        let key = PKey::private_key_from_pem(&key)?;
 
         Ok(Self { cert, key })
     }
